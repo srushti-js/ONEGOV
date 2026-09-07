@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Revenue & Income Assessment Portal</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="portal-page">
+
+  <div class="portal-container">
+
+    <div class="portal-header">
+      <h1>Revenue & Income Assessment Portal</h1>
+      <p>Verified citizen income information</p>
+      <span class="status">● Income Verified</span>
+    </div>
+
+    <div class="data-card">
+      <h2>Income Information</h2>
+
+      <div class="data-row">
+        <span class="data-label">Annual Income</span>
+        <strong class="data-value">
+          ₹<%= citizen.income.annualIncome ?? "Not Available" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">Income Category</span>
+        <strong class="data-value">
+          <%= citizen.income.incomeCategory || "Not Available" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">Source of Income</span>
+        <strong class="data-value">
+          <%= citizen.income.sourceOfIncome || "Not Available" %>
+        </strong>
+      </div>
+    </div>
+
+    <div class="data-card">
+      <h3>Income verification completed successfully. ✅</h3>
+      <p>This information has been retrieved from the verified government profile.</p>
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Transport Department (RTO)</title>
+   <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+  <h1>Transport Department (RTO)</h1>
+
+  <hr>
+
+  <h2>Driving License Information</h2>
+
+  <p>
+    <strong>License Number:</strong>
+    <%= citizen.drivingLicense.licenseNumber %>
+  </p>
+
+  <p>
+    <strong>Vehicle Types:</strong>
+    <%= citizen.drivingLicense.vehicleTypes.join(", ") %>
+  </p>
+
+  <p>
+    <strong>Expiry Date:</strong>
+    <%= new Date(citizen.drivingLicense.expiryDate).toLocaleDateString() %>
+  </p>
+
+  <hr>
+
+  <h3>Driving License verified successfully. ✅</h3>
+
+  <a href="/verify-citizen?nationalId=<%= citizen.nationalId %>&fullName=<%= encodeURIComponent(citizen.identity.fullName) %>">
+    Back to Citizen Verification
+  </a>
+
+</body>
+</html>

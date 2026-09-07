@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>
+    Login - Government Interoperability
+  </title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+</head>
+
+
+<body class="login-page">
+
+
+  <div class="login-container">
+
+
+    <div class="logo">
+      🏛️
+    </div>
+
+
+    <h1>
+      Welcome Back
+    </h1>
+
+
+    <p class="subtitle">
+      Login to access government services
+    </p>
+
+
+    <% if (error) { %>
+
+      <p class="error">
+        <%= error %>
+      </p>
+
+    <% } %>
+
+
+    <form
+      action="/login"
+      method="POST"
+    >
+
+
+      <label for="email">
+        Email or Mobile Number
+      </label>
+
+
+      <input
+        type="text"
+        id="email"
+        name="email"
+        placeholder="Enter your email or mobile number"
+        required
+      >
+
+
+      <label for="password">
+        Password
+      </label>
+
+
+      <input
+        type="password"
+        id="password"
+        name="password"
+        placeholder="Enter your password"
+        required
+      >
+
+
+      <button
+        type="submit"
+        class="login-btn"
+      >
+        Login
+      </button>
+
+
+    </form>
+
+
+    <div class="signup">
+
+      Don't have an account?
+
+      <a href="/signup">
+        Create Account
+      </a>
+
+    </div>
+
+
+    <div class="security">
+      🔒 Secure Government Service Access
+    </div>
+
+
+  </div>
+
+
+</body>
+
+</html>

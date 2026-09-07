@@ -1,0 +1,921 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>Create Account - Government Interoperability</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+
+</head>
+
+<body class="register-page">
+
+  <div class="register-container">
+
+    <div class="register-header">
+
+      <div class="register-logo">
+        🏛️
+      </div>
+
+      <h1>Create Account</h1>
+
+      <p>
+        Register for Government Interoperability Services
+      </p>
+
+    </div>
+
+    <% if (error) { %>
+
+      <div class="register-error">
+        <%= error %>
+      </div>
+
+    <% } %>
+
+    <% if (success) { %>
+
+      <div class="register-success">
+        <%= success %>
+      </div>
+
+    <% } %>
+
+    <form
+      action="/register"
+      method="POST"
+      class="register-form"
+    >
+
+      <div class="form-section">
+
+        <div class="section-title">
+          <span>01</span>
+          <div>
+            <h2>Identity Information</h2>
+            <p>Enter your basic identity details</p>
+          </div>
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="fullName">
+              Full Name
+            </label>
+
+            <input
+              type="text"
+              id="fullName"
+              name="fullName"
+              placeholder="Enter your full name"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="dob">
+              Date of Birth
+            </label>
+
+            <input
+              type="date"
+              id="dob"
+              name="dob"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="gender">
+              Gender
+            </label>
+
+            <select
+              id="gender"
+              name="gender"
+              required
+            >
+
+              <option value="">
+                Select Gender
+              </option>
+
+              <option value="Male">
+                Male
+              </option>
+
+              <option value="Female">
+                Female
+              </option>
+
+              <option value="Other">
+                Other
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="fatherName">
+              Father's Name
+            </label>
+
+            <input
+              type="text"
+              id="fatherName"
+              name="fatherName"
+              placeholder="Enter father's name"
+              required
+            >
+
+          </div>
+
+          <div class="form-group full-width">
+
+            <label for="address">
+              Address
+            </label>
+
+            <textarea
+              id="address"
+              name="address"
+              placeholder="Enter your full address"
+              required
+            ></textarea>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>02</span>
+
+          <div>
+
+            <h2>Income Information</h2>
+
+            <p>Provide your income details</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="annualIncome">
+              Annual Income
+            </label>
+
+            <input
+              type="number"
+              id="annualIncome"
+              name="annualIncome"
+              placeholder="Enter annual income"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="incomeCategory">
+              Income Category
+            </label>
+
+            <select
+              id="incomeCategory"
+              name="incomeCategory"
+              required
+            >
+
+              <option value="">
+                Select Category
+              </option>
+
+              <option value="Low Income">
+                Low Income
+              </option>
+
+              <option value="Middle Income">
+                Middle Income
+              </option>
+
+              <option value="High Income">
+                High Income
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group full-width">
+
+            <label for="sourceOfIncome">
+              Source of Income
+            </label>
+
+            <input
+              type="text"
+              id="sourceOfIncome"
+              name="sourceOfIncome"
+              placeholder="e.g. Private Sector Salary"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>03</span>
+
+          <div>
+
+            <h2>Education Information</h2>
+
+            <p>Enter your educational qualification</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="degree">
+              Degree
+            </label>
+
+            <input
+              type="text"
+              id="degree"
+              name="degree"
+              placeholder="e.g. B.Tech in Computer Science"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="institution">
+              Institution
+            </label>
+
+            <input
+              type="text"
+              id="institution"
+              name="institution"
+              placeholder="Enter institution name"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="passingYear">
+              Passing Year
+            </label>
+
+            <input
+              type="number"
+              id="passingYear"
+              name="passingYear"
+              placeholder="e.g. 2024"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="gradeOrPercentage">
+              Grade / Percentage
+            </label>
+
+            <input
+              type="text"
+              id="gradeOrPercentage"
+              name="gradeOrPercentage"
+              placeholder="e.g. 8.4 CGPA"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>04</span>
+
+          <div>
+
+            <h2>Health Information</h2>
+
+            <p>Provide your health-related information</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="bloodGroup">
+              Blood Group
+            </label>
+
+            <input
+              type="text"
+              id="bloodGroup"
+              name="bloodGroup"
+              placeholder="e.g. O+"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="disabilityStatus">
+              Disability Status
+            </label>
+
+            <select
+              id="disabilityStatus"
+              name="disabilityStatus"
+              required
+            >
+
+              <option value="false">
+                No
+              </option>
+
+              <option value="true">
+                Yes
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group full-width">
+
+            <label for="healthInsuranceId">
+              Health Insurance ID
+            </label>
+
+            <input
+              type="text"
+              id="healthInsuranceId"
+              name="healthInsuranceId"
+              placeholder="Enter health insurance ID"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>05</span>
+
+          <div>
+
+            <h2>Caste Information</h2>
+
+            <p>Enter caste and certificate details</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="category">
+              Category
+            </label>
+
+            <select
+              id="category"
+              name="category"
+              required
+            >
+
+              <option value="">
+                Select Category
+              </option>
+
+              <option value="General">
+                General
+              </option>
+
+              <option value="OBC">
+                OBC
+              </option>
+
+              <option value="SC">
+                SC
+              </option>
+
+              <option value="ST">
+                ST
+              </option>
+
+              <option value="EWS">
+                EWS
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="certificateNumber">
+              Certificate Number
+            </label>
+
+            <input
+              type="text"
+              id="certificateNumber"
+              name="certificateNumber"
+              placeholder="Enter certificate number"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>06</span>
+
+          <div>
+
+            <h2>Driving License Information</h2>
+
+            <p>Enter your driving license details</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="licenseNumber">
+              License Number
+            </label>
+
+            <input
+              type="text"
+              id="licenseNumber"
+              name="licenseNumber"
+              placeholder="Enter license number"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="vehicleTypes">
+              Vehicle Types
+            </label>
+
+            <input
+              type="text"
+              id="vehicleTypes"
+              name="vehicleTypes"
+              placeholder="e.g. MCWG, LMV"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="expiryDate">
+              Expiry Date
+            </label>
+
+            <input
+              type="date"
+              id="expiryDate"
+              name="expiryDate"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>07</span>
+
+          <div>
+
+            <h2>Land Information</h2>
+
+            <p>Enter your land record details</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="surveyNumber">
+              Survey Number
+            </label>
+
+            <input
+              type="text"
+              id="surveyNumber"
+              name="surveyNumber"
+              placeholder="Enter survey number"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="areaInAcres">
+              Area in Acres
+            </label>
+
+            <input
+              type="number"
+              step="0.01"
+              id="areaInAcres"
+              name="areaInAcres"
+              placeholder="e.g. 0.25"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="district">
+              District
+            </label>
+
+            <input
+              type="text"
+              id="district"
+              name="district"
+              placeholder="Enter district"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="state">
+              State
+            </label>
+
+            <input
+              type="text"
+              id="state"
+              name="state"
+              placeholder="Enter state"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>08</span>
+
+          <div>
+
+            <h2>Business & Tax Information</h2>
+
+            <p>Enter your business and tax details</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="panNumber">
+              PAN Number
+            </label>
+
+            <input
+              type="text"
+              id="panNumber"
+              name="panNumber"
+              placeholder="Enter PAN number"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="gstin">
+              GSTIN
+            </label>
+
+            <input
+              type="text"
+              id="gstin"
+              name="gstin"
+              placeholder="Enter GSTIN"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="businessName">
+              Business Name
+            </label>
+
+            <input
+              type="text"
+              id="businessName"
+              name="businessName"
+              placeholder="Enter business name"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="taxFilingStatus">
+              Tax Filing Status
+            </label>
+
+            <input
+              type="text"
+              id="taxFilingStatus"
+              name="taxFilingStatus"
+              placeholder="e.g. Filed - ITR-1"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>09</span>
+
+          <div>
+
+            <h2>Employment Information</h2>
+
+            <p>Enter your employment details</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="employmentStatus">
+              Employment Status
+            </label>
+
+            <select
+              id="employmentStatus"
+              name="employmentStatus"
+              required
+            >
+
+              <option value="">
+                Select Status
+              </option>
+
+              <option value="Employed">
+                Employed
+              </option>
+
+              <option value="Self Employed">
+                Self Employed
+              </option>
+
+              <option value="Unemployed">
+                Unemployed
+              </option>
+
+              <option value="Student">
+                Student
+              </option>
+
+            </select>
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="employerName">
+              Employer Name
+            </label>
+
+            <input
+              type="text"
+              id="employerName"
+              name="employerName"
+              placeholder="Enter employer name"
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="occupation">
+              Occupation
+            </label>
+
+            <input
+              type="text"
+              id="occupation"
+              name="occupation"
+              placeholder="Enter occupation"
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="form-section">
+
+        <div class="section-title">
+
+          <span>10</span>
+
+          <div>
+
+            <h2>Account Information</h2>
+
+            <p>Create your login credentials</p>
+
+          </div>
+
+        </div>
+
+        <div class="form-grid">
+
+          <div class="form-group">
+
+            <label for="email">
+              Email
+            </label>
+
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="Enter your email"
+              required
+            >
+
+          </div>
+
+          <div class="form-group">
+
+            <label for="mobile">
+              Mobile Number
+            </label>
+
+            <input
+              type="text"
+              id="mobile"
+              name="mobile"
+              placeholder="Enter your mobile number"
+              required
+            >
+
+          </div>
+
+          <div class="form-group full-width">
+
+            <label for="password">
+              Password
+            </label>
+
+            <input
+              type="password"
+              id="password"
+              name="password"
+              placeholder="Create a password"
+              required
+            >
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div class="register-submit">
+
+        <button
+          type="submit"
+          class="register-btn"
+        >
+          Create Government Account
+        </button>
+
+      </div>
+
+    </form>
+
+    <div class="register-footer">
+
+      <p>
+        Already have an account?
+        <a href="/login">
+          Login
+        </a>
+      </p>
+
+      <span>
+        🔒 Secure Government Service Registration
+      </span>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

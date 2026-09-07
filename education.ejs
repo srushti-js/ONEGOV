@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Educational Qualifications Registry</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="portal-page">
+
+  <div class="portal-container">
+
+    <div class="portal-header">
+      <h1>Educational Qualifications Registry</h1>
+      <p>Verified educational qualification records</p>
+      <span class="status">● Education Verified</span>
+    </div>
+
+    <div class="data-card">
+      <h2>Education Information</h2>
+
+      <% if (citizen.education && citizen.education.length > 0) { %>
+
+        <% citizen.education.forEach(education => { %>
+
+          <div class="data-row">
+            <span class="data-label">Degree</span>
+            <strong class="data-value">
+              <%= education.degree || "Not Available" %>
+            </strong>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">Institution</span>
+            <strong class="data-value">
+              <%= education.institution || "Not Available" %>
+            </strong>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">Passing Year</span>
+            <strong class="data-value">
+              <%= education.passingYear || "Not Available" %>
+            </strong>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">Grade / Percentage</span>
+            <strong class="data-value">
+              <%= education.gradeOrPercentage || "Not Available" %>
+            </strong>
+          </div>
+
+        <% }) %>
+
+      <% } else { %>
+
+        <div class="empty-state">
+          No educational records available.
+        </div>
+
+      <% } %>
+
+    </div>
+
+    <div class="data-card">
+      <h3>Education verification completed successfully. ✅</h3>
+      <p>This information has been retrieved from the verified government profile.</p>
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

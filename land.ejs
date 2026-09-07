@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Land Records & Revenue Department</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="portal-page">
+
+  <div class="portal-container">
+
+    <div class="portal-header">
+      <h1>Land Records & Revenue Department</h1>
+      <p>Verified citizen land ownership records</p>
+      <span class="status">● Land Records Verified</span>
+    </div>
+
+    <div class="data-card">
+      <h2>Land Information</h2>
+
+      <% if (citizen.land && citizen.land.length > 0) { %>
+
+        <% citizen.land.forEach(land => { %>
+
+          <div class="data-row">
+            <span class="data-label">Survey Number</span>
+            <strong class="data-value">
+              <%= land.surveyNumber || "Not Available" %>
+            </strong>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">Area</span>
+            <strong class="data-value">
+              <%= land.areaInAcres ?? "Not Available" %> Acres
+            </strong>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">District</span>
+            <strong class="data-value">
+              <%= land.district || "Not Available" %>
+            </strong>
+          </div>
+
+          <div class="data-row">
+            <span class="data-label">State</span>
+            <strong class="data-value">
+              <%= land.state || "Not Available" %>
+            </strong>
+          </div>
+
+        <% }) %>
+
+      <% } else { %>
+
+        <div class="empty-state">
+          No land records available.
+        </div>
+
+      <% } %>
+
+    </div>
+
+    <div class="data-card">
+      <h3>Land records verified successfully. ✅</h3>
+      <p>This information has been retrieved from the verified government profile.</p>
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

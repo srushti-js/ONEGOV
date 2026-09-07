@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Unified Scheme & Application Tracker</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="application-status-page">
+
+  <div class="application-status-container">
+
+    <div class="portal-header">
+      <h1>Unified Scheme & Application Tracker</h1>
+      <p>Track your government applications and service requests</p>
+      <span class="status">● Application Tracking Active</span>
+    </div>
+
+    <h2>Application Status</h2>
+
+    <% if (citizen.applicationStatus && citizen.applicationStatus.length > 0) { %>
+
+      <% citizen.applicationStatus.forEach(application => { %>
+
+        <div class="application-card">
+
+          <h3><%= application.title || "Government Application" %></h3>
+
+          <p>
+            <strong>Application Type:</strong>
+            <%= application.applicationType || "Not Available" %>
+          </p>
+
+          <p>
+            <strong>Application Number:</strong>
+            <%= application.applicationNumber || "Not Available" %>
+          </p>
+
+          <p>
+            <strong>Department:</strong>
+            <%= application.department || "Not Available" %>
+          </p>
+
+          <p>
+            <strong>Applied Date:</strong>
+            <%= application.appliedDate
+              ? new Date(application.appliedDate).toLocaleDateString()
+              : "Not Available" %>
+          </p>
+
+          <p>
+            <strong>Current Status:</strong>
+            <span class="application-status">
+              <%= application.currentStatus || "Not Available" %>
+            </span>
+          </p>
+
+          <p>
+            <strong>Remarks:</strong>
+            <%= application.remarks || "No remarks available." %>
+          </p>
+
+        </div>
+
+      <% }) %>
+
+    <% } else { %>
+
+      <div class="empty-state">
+        No applications found for this citizen.
+      </div>
+
+    <% } %>
+
+    <div class="application-card">
+      <h3>Application tracking completed successfully. ✅</h3>
+      <p>Your government applications can be tracked from this portal.</p>
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

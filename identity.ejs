@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  >
+
+  <title>National Identity & Address Portal</title>
+
+  <link
+    rel="stylesheet"
+    href="/style.css"
+  >
+</head>
+
+<body class="portal-page">
+
+  <div class="portal-container">
+
+    <div class="portal-header">
+
+      <h1>National Identity & Address Portal</h1>
+
+      <p>
+        Verified citizen identity and address information
+      </p>
+
+      <span class="status">
+        ● Identity Verified
+      </span>
+
+    </div>
+
+    <div class="data-card">
+
+      <h2>Identity Information</h2>
+
+      <div class="data-row">
+
+        <span class="data-label">
+          Full Name
+        </span>
+
+        <strong class="data-value">
+          <%= citizen.identity.fullName || "Not Available" %>
+        </strong>
+
+      </div>
+
+      <div class="data-row">
+
+        <span class="data-label">
+          National ID
+        </span>
+
+        <strong class="data-value">
+          <%= citizen.nationalId || "Not Available" %>
+        </strong>
+
+      </div>
+
+      <div class="data-row">
+
+        <span class="data-label">
+          Date of Birth
+        </span>
+
+        <strong class="data-value">
+          <%= citizen.identity.dob
+            ? new Date(citizen.identity.dob).toLocaleDateString()
+            : "Not Available"
+          %>
+        </strong>
+
+      </div>
+
+      <div class="data-row">
+
+        <span class="data-label">
+          Gender
+        </span>
+
+        <strong class="data-value">
+          <%= citizen.identity.gender || "Not Available" %>
+        </strong>
+
+      </div>
+
+      <div class="data-row">
+
+        <span class="data-label">
+          Father's Name
+        </span>
+
+        <strong class="data-value">
+          <%= citizen.identity.fatherName || "Not Available" %>
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div class="data-card">
+
+      <h2>Address Information</h2>
+
+      <div class="data-row">
+
+        <span class="data-label">
+          Registered Address
+        </span>
+
+        <strong class="data-value">
+          <%= citizen.identity.address || "Not Available" %>
+        </strong>
+
+      </div>
+
+    </div>
+
+    <div class="data-card">
+
+      <h3>
+        Identity verification completed successfully. ✅
+      </h3>
+
+      <p>
+        This information has been retrieved from the verified government profile.
+      </p>
+
+      <a
+        href="/dashboard?nationalId=<%= citizen.nationalId %>"
+        class="back-btn"
+      >
+        ← Back to Dashboard
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>BharatSetu Dashboard</title>
+
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="dashboard-page">
+
+  <aside class="sidebar">
+
+    <div class="brand">
+      <div class="brand-emblem">🏛️</div>
+
+      <div>
+        <h2>BharatSetu</h2>
+        <p>One Citizen. One Platform.</p>
+      </div>
+    </div>
+
+    <nav class="sidebar-nav">
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="nav-item active">
+        🏠
+        <span>Home</span>
+      </a>
+
+      <a href="#government-portals" class="nav-item">
+        🏛️
+        <span>Government Portals</span>
+      </a>
+
+      <a href="/services?nationalId=<%= citizen.nationalId %>" class="nav-item">
+        💼
+        <span>Services & Applications</span>
+      </a>
+
+      <a href="/portal/applicationStatus?nationalId=<%= citizen.nationalId %>" class="nav-item">
+        🕒
+        <span>Application Status</span>
+      </a>
+
+    </nav>
+
+    <div class="sidebar-bottom">
+
+      <a href="/login" class="nav-item">
+        🚪
+        <span>Logout</span>
+      </a>
+
+    </div>
+
+  </aside>
+
+
+  <main class="dashboard-main">
+
+    <header class="topbar">
+
+      <div class="search-box">
+        🔍
+
+        <input
+          type="text"
+          placeholder="Search government services..."
+        >
+
+      </div>
+
+      <div class="topbar-right">
+
+        <div class="profile-mini">
+
+          <div class="profile-avatar">
+            👤
+          </div>
+
+          <div>
+
+            <strong>
+              <%= citizen.identity.fullName %>
+            </strong>
+
+            <small>
+              Citizen
+            </small>
+
+          </div>
+
+        </div>
+
+      </div>
+
+    </header>
+
+
+    <section class="dashboard-content">
+
+      <div class="main-column">
+
+        <section class="hero-section">
+
+          <div class="hero-content">
+
+            <h1>
+              Welcome, <%= citizen.identity.fullName %>!
+            </h1>
+
+            <p>
+              Access Government Services. Seamlessly. Securely. Together.
+            </p>
+
+          </div>
+
+          <div class="hero-art">
+
+            <span>Digital India</span>
+
+            <strong>Stronger India</strong>
+
+          </div>
+
+        </section>
+
+
+        <section
+          class="dashboard-section"
+          id="government-portals"
+        >
+
+          <div class="section-heading">
+
+            <div>
+
+              <h2>
+                Government Portals
+              </h2>
+
+              <p>
+                Access your verified data from government departments
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="portal-grid">
+
+
+            <a
+              href="/portal/identity?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon blue">
+                🪪
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                1. National Identity & Address Portal
+              </h3>
+
+              <p>
+                UIDAI
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/income?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon green">
+                📊
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                2. Revenue & Income Assessment Portal
+              </h3>
+
+              <p>
+                Income Tax Department
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/education?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon pink">
+                🎓
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                3. Educational Qualifications Registry
+              </h3>
+
+              <p>
+                Education Department
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/health?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon red">
+                ❤️
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                4. National Health Authority (ABHA)
+              </h3>
+
+              <p>
+                Ministry of Health
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/caste?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon orange">
+                👥
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                5. Social Welfare & Caste Certificate
+              </h3>
+
+              <p>
+                Social Justice Dept.
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/drivingLicense?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon blue">
+                🚗
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                6. Transport Department (RTO)
+              </h3>
+
+              <p>
+                Ministry of Road Transport
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/land?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon green">
+                📍
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                7. Land Records & Revenue Department
+              </h3>
+
+              <p>
+                State Revenue Dept.
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/businessAndTax?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon purple">
+                📄
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                8. Taxation & Business Registry
+              </h3>
+
+              <p>
+                Ministry of Finance
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/employment?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon blue">
+                💼
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                9. Employment Exchange Board
+              </h3>
+
+              <p>
+                Labour & Employment
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/applicationStatus?nationalId=<%= citizen.nationalId %>"
+              class="portal-card"
+            >
+
+              <div class="portal-icon orange">
+                📋
+              </div>
+
+              <div class="card-arrow">
+                ›
+              </div>
+
+              <h3>
+                10. Application Status Tracker
+              </h3>
+
+              <p>
+                Government of India
+              </p>
+
+            </a>
+
+
+          </div>
+
+        </section>
+
+
+        <section class="dashboard-section">
+
+          <div class="section-heading">
+
+            <div>
+
+              <h2>
+                Government Services
+              </h2>
+
+              <p>
+                Apply for government schemes, certificates and services
+              </p>
+
+            </div>
+
+          </div>
+
+
+          <div class="service-grid">
+
+
+            <a
+              href="/services?nationalId=<%= citizen.nationalId %>"
+              class="service-card"
+            >
+
+              <div class="service-icon cyan">
+                📄
+              </div>
+
+              <h3>
+                Service Application
+              </h3>
+
+              <p>
+                Apply for schemes, scholarships and certificates
+              </p>
+
+            </a>
+
+
+            <a
+              href="/portal/applicationStatus?nationalId=<%= citizen.nationalId %>"
+              class="service-card"
+            >
+
+              <div class="service-icon purple">
+                🕒
+              </div>
+
+              <h3>
+                Application Status
+              </h3>
+
+              <p>
+                Track your submitted applications
+              </p>
+
+            </a>
+
+
+          </div>
+
+        </section>
+
+      </div>
+
+
+      <aside class="right-panel">
+
+
+        <div class="profile-card">
+
+          <div class="profile-header">
+
+            <div class="large-avatar">
+              👤
+            </div>
+
+            <div>
+
+              <h3>
+                <%= citizen.identity.fullName %>
+              </h3>
+
+              <p>
+                National ID: <%= citizen.nationalId %>
+              </p>
+
+              <span class="verified">
+                ● Verified Citizen
+              </span>
+
+            </div>
+
+          </div>
+
+
+          <div class="profile-details">
+
+            <div>
+
+              <span>
+                Date of Birth
+              </span>
+
+              <strong>
+                <%= citizen.identity.dob
+                  ? new Date(citizen.identity.dob).toLocaleDateString()
+                  : "N/A"
+                %>
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Gender
+              </span>
+
+              <strong>
+                <%= citizen.identity.gender || "N/A" %>
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                State
+              </span>
+
+              <strong>
+                <%= citizen.land && citizen.land.length
+                  ? citizen.land[0].state
+                  : "Maharashtra"
+                %>
+              </strong>
+
+            </div>
+
+
+            <div>
+
+              <span>
+                Status
+              </span>
+
+              <strong>
+                Verified
+              </strong>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="notification-card">
+
+          <div class="notification-heading">
+
+            <h3>
+              Quick Access
+            </h3>
+
+          </div>
+
+
+          <div class="notification-item">
+
+            <div class="notification-badge purple-bg">
+              📄
+            </div>
+
+            <div>
+
+              <strong>
+                Government Services
+              </strong>
+
+              <small>
+                Apply for a service
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="notification-item">
+
+            <div class="notification-badge green-bg">
+              📋
+            </div>
+
+            <div>
+
+              <strong>
+                Application Tracker
+              </strong>
+
+              <small>
+                Check application status
+              </small>
+
+            </div>
+
+          </div>
+
+
+          <div class="notification-item">
+
+            <div class="notification-badge orange-bg">
+              🪪
+            </div>
+
+            <div>
+
+              <strong>
+                Identity Information
+              </strong>
+
+              <small>
+                View verified identity data
+              </small>
+
+            </div>
+
+          </div>
+
+        </div>
+
+
+        <div class="india-banner">
+
+          <h2>
+            Empowered Citizens
+          </h2>
+
+          <h3>
+            Stronger Nation
+          </h3>
+
+          <div class="india-art">
+            🇮🇳
+          </div>
+
+        </div>
+
+
+      </aside>
+
+    </section>
+
+  </main>
+
+</body>
+
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>National Health Authority</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="portal-page">
+
+  <div class="portal-container">
+
+    <div class="portal-header">
+      <h1>National Health Authority (ABHA)</h1>
+      <p>Verified citizen health information</p>
+      <span class="status">● Health Information Verified</span>
+    </div>
+
+    <div class="data-card">
+      <h2>Health Information</h2>
+
+      <div class="data-row">
+        <span class="data-label">Blood Group</span>
+        <strong class="data-value">
+          <%= citizen.health.bloodGroup || "Not Available" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">Disability Status</span>
+        <strong class="data-value">
+          <%= citizen.health.disabilityStatus ? "Yes" : "No" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">Health Insurance ID</span>
+        <strong class="data-value">
+          <%= citizen.health.healthInsuranceId || "Not Available" %>
+        </strong>
+      </div>
+
+    </div>
+
+    <div class="data-card">
+      <h3>Health information verified successfully. ✅</h3>
+      <p>This information has been retrieved from the verified government profile.</p>
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

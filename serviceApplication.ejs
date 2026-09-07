@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Government Services & Applications</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="service-page">
+
+  <div class="service-container">
+
+    <div class="service-header">
+
+      <div class="service-logo">
+        🏛️
+      </div>
+
+      <h1>Government Services & Applications</h1>
+
+      <p>
+        Select a government service and continue with
+        verified citizen information.
+      </p>
+
+    </div>
+
+    <div class="service-card">
+
+      <div class="service-welcome">
+        <h2>Welcome, <%= citizen.identity.fullName %> 👋</h2>
+
+        <p>
+          Select a government service you want to apply for.
+        </p>
+      </div>
+
+      <form action="/consent" method="GET">
+
+        <input
+          type="hidden"
+          name="nationalId"
+          value="<%= citizen.nationalId %>"
+        >
+
+        <div class="service-form-group">
+
+          <label for="serviceType">
+            Select Service Category
+          </label>
+
+          <select
+            id="serviceType"
+            name="serviceType"
+            required
+            onchange="showServiceDetails()"
+          >
+
+            <option value="">
+              Select a category
+            </option>
+
+            <option value="Scholarship & Education">
+              🎓 Scholarship & Education Portals
+            </option>
+
+            <option value="Document & Certificate">
+              📄 Document Issuance & Certificates
+            </option>
+
+            <option value="Citizen Welfare & Pension">
+              💰 Citizen Welfare & Pension Schemes
+            </option>
+
+            <option value="Utility & Citizen Services">
+              🏛️ Utility & Citizen Services
+            </option>
+
+          </select>
+
+        </div>
+
+        <div
+          id="serviceDetails"
+          class="service-details"
+          style="display: none;"
+        >
+
+          <div class="service-form-group">
+
+            <label for="serviceName">
+              Select Portal / Service
+            </label>
+
+            <select
+              id="serviceName"
+              name="serviceName"
+              required
+              onchange="updateDepartment()"
+            >
+            </select>
+
+          </div>
+
+          <div class="service-form-group">
+
+            <label for="department">
+              Department
+            </label>
+
+            <input
+              type="text"
+              id="department"
+              name="department"
+              readonly
+            >
+
+          </div>
+
+          <div class="data-card">
+
+            <div class="data-card-header">
+
+              <div>
+                <h2>Verified Information</h2>
+
+                <p>
+                  Information retrieved from verified government records.
+                </p>
+              </div>
+
+              <span class="verified-badge">
+                ✓ Verified
+              </span>
+
+            </div>
+
+            <div class="data-row">
+
+              <span class="data-label">
+                Name
+              </span>
+
+              <strong class="data-value">
+                <%= citizen.identity.fullName || "Not Available" %>
+              </strong>
+
+            </div>
+
+            <div class="data-row">
+
+              <span class="data-label">
+                Date of Birth
+              </span>
+
+              <strong class="data-value">
+
+                <%= citizen.identity.dob
+                  ? new Date(citizen.identity.dob).toLocaleDateString()
+                  : "Not Available" %>
+
+              </strong>
+
+            </div>
+
+            <div class="data-row">
+
+              <span class="data-label">
+                Address
+              </span>
+
+              <strong class="data-value">
+                <%= citizen.identity.address || "Not Available" %>
+              </strong>
+
+            </div>
+
+            <div class="data-row">
+
+              <span class="data-label">
+                Annual Income
+              </span>
+
+              <strong class="data-value">
+                ₹<%= citizen.income.annualIncome ?? "Not Available" %>
+              </strong>
+
+            </div>
+
+            <div class="data-row">
+
+              <span class="data-label">
+                Education
+              </span>
+
+              <strong class="data-value">
+
+                <%= citizen.education &&
+                    citizen.education.length > 0
+                    ? citizen.education[0].degree
+                    : "Not Available" %>
+
+              </strong>
+
+            </div>
+
+            <div class="data-row">
+
+              <span class="data-label">
+                Caste Category
+              </span>
+
+              <strong class="data-value">
+                <%= citizen.caste.category || "Not Available" %>
+              </strong>
+
+            </div>
+
+          </div>
+
+          <div class="consent-preview">
+
+            <div class="consent-preview-icon">
+              🔐
+            </div>
+
+            <div>
+
+              <h2>Consent Manager</h2>
+
+              <p>
+                On the next page, you can choose which verified
+                government data you allow this service to access.
+              </p>
+
+            </div>
+
+          </div>
+
+          <button
+            type="submit"
+            class="service-submit"
+          >
+            Continue to Consent Manager 🔐
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+    <a
+      href="/dashboard?nationalId=<%= citizen.nationalId %>"
+      class="back-btn"
+    >
+      ← Back to Dashboard
+    </a>
+
+  </div>
+
+  <script>
+
+    const services = {
+
+      "Scholarship & Education": [
+        {
+          name: "MahaDBT / State Scholarship Portal",
+          department: "Education Department"
+        },
+        {
+          name: "National Scholarship Portal (NSP)",
+          department: "Education Department"
+        },
+        {
+          name: "Foreign Education & Study Grants",
+          department: "Education Department"
+        }
+      ],
+
+      "Document & Certificate": [
+        {
+          name: "Income & Domicile Services",
+          department: "Revenue Department"
+        },
+        {
+          name: "Caste & Community Services",
+          department: "Social Welfare Department"
+        },
+        {
+          name: "Civil Registration",
+          department: "Revenue Department"
+        }
+      ],
+
+      "Citizen Welfare & Pension": [
+        {
+          name: "Farmer Welfare (Krishi Portal)",
+          department: "Agriculture Department"
+        },
+        {
+          name: "Social Security & Pensions",
+          department: "Social Welfare Department"
+        },
+        {
+          name: "Housing Schemes",
+          department: "Housing Department"
+        }
+      ],
+
+      "Utility & Citizen Services": [
+        {
+          name: "Voter ID Services (NVSP)",
+          department: "Election Department"
+        },
+        {
+          name: "Ration Card & Food Distribution",
+          department: "Food & Civil Supplies Department"
+        },
+        {
+          name: "Police & Verification Services",
+          department: "Police Department"
+        }
+      ]
+
+    };
+
+    function showServiceDetails() {
+
+      const serviceType =
+        document.getElementById("serviceType").value;
+
+      const serviceName =
+        document.getElementById("serviceName");
+
+      const department =
+        document.getElementById("department");
+
+      const serviceDetails =
+        document.getElementById("serviceDetails");
+
+      serviceName.innerHTML = "";
+
+      department.value = "";
+
+      if (!serviceType) {
+
+        serviceDetails.style.display = "none";
+
+        return;
+
+      }
+
+      serviceDetails.style.display = "block";
+
+      services[serviceType].forEach(service => {
+
+        const option =
+          document.createElement("option");
+
+        option.value = service.name;
+
+        option.textContent = service.name;
+
+        serviceName.appendChild(option);
+
+      });
+
+      updateDepartment();
+
+    }
+
+    function updateDepartment() {
+
+      const serviceType =
+        document.getElementById("serviceType").value;
+
+      const serviceName =
+        document.getElementById("serviceName").value;
+
+      const department =
+        document.getElementById("department");
+
+      if (!serviceType || !serviceName) {
+
+        department.value = "";
+
+        return;
+
+      }
+
+      const selectedService =
+        services[serviceType].find(
+          service => service.name === serviceName
+        );
+
+      if (selectedService) {
+
+        department.value =
+          selectedService.department;
+
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

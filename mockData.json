@@ -1,0 +1,52 @@
+[
+  {
+    "applicationNumber": "APP20260001",
+    "nationalId": "IND10001",
+    "serviceType": "Scholarship",
+    "serviceName": "National Merit Scholarship",
+    "department": "Education Department",
+    "applicationDate": "2026-09-01",
+    "status": "Processing",
+    "remarks": "Application is under verification."
+  },
+  {
+    "applicationNumber": "APP20260002",
+    "nationalId": "IND10001",
+    "serviceType": "Certificate",
+    "serviceName": "Income Certificate",
+    "department": "Revenue Department",
+    "applicationDate": "2026-09-02",
+    "status": "Approved",
+    "remarks": "Income certificate approved."
+  },
+  {
+    "applicationNumber": "APP20260003",
+    "nationalId": "IND10001",
+    "serviceType": "Government Scheme",
+    "serviceName": "Housing Assistance Scheme",
+    "department": "Social Welfare Department",
+    "applicationDate": "2026-09-03",
+    "status": "Submitted",
+    "remarks": "Application successfully submitted."
+  },
+  {
+    "applicationNumber": "APP20260004",
+    "nationalId": "IND10002",
+    "serviceType": "Scholarship",
+    "serviceName": "Higher Education Scholarship",
+    "department": "Education Department",
+    "applicationDate": "2026-09-04",
+    "status": "Verification",
+    "remarks": "Documents are being verified."
+  },
+  {
+    "applicationNumber": "APP20260005",
+    "nationalId": "IND10002",
+    "serviceType": "Certificate",
+    "serviceName": "Caste Certificate",
+    "department": "Social Welfare Department",
+    "applicationDate": "2026-09-05",
+    "status": "Action Required",
+    "remarks": "Additional document required."
+  }
+]

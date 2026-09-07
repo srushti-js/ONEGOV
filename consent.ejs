@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consent Manager</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="consent-page">
+
+  <div class="consent-container">
+
+    <div class="consent-header">
+      <div class="consent-logo">🔐</div>
+
+      <h1>Consent Manager</h1>
+
+      <p>
+        Control which verified government data can be accessed
+        for your application.
+      </p>
+    </div>
+
+    <div class="consent-card">
+
+      <h2>Welcome, <%= citizen.identity.fullName %> 👋</h2>
+
+      <div class="consent-info">
+
+        <strong>Application Details</strong>
+
+        <div class="consent-details">
+
+          <div class="consent-detail">
+            <span>Category</span>
+            <strong><%= serviceType %></strong>
+          </div>
+
+          <div class="consent-detail">
+            <span>Service</span>
+            <strong><%= serviceName %></strong>
+          </div>
+
+          <div class="consent-detail">
+            <span>Department</span>
+            <strong><%= department %></strong>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+    <div class="consent-card">
+
+      <div class="consent-section-header">
+        <div class="consent-section-icon">🛡️</div>
+
+        <div>
+          <h2>Data Access Permission</h2>
+
+          <p>
+            Select which verified government data you allow
+            this service to access.
+          </p>
+        </div>
+      </div>
+
+      <form action="/save-consent" method="POST">
+
+        <input
+          type="hidden"
+          name="nationalId"
+          value="<%= citizen.nationalId %>"
+        >
+
+        <input
+          type="hidden"
+          name="serviceType"
+          value="<%= serviceType %>"
+        >
+
+        <input
+          type="hidden"
+          name="serviceName"
+          value="<%= serviceName %>"
+        >
+
+        <input
+          type="hidden"
+          name="department"
+          value="<%= department %>"
+        >
+
+        <div class="consent-options">
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="identity"
+                value="true"
+              >
+
+              <div>
+                <strong>Identity Information</strong>
+                <span>
+                  Name, Date of Birth, Gender and Address
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="income"
+                value="true"
+              >
+
+              <div>
+                <strong>Income Information</strong>
+                <span>
+                  Annual Income and Income Category
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="education"
+                value="true"
+              >
+
+              <div>
+                <strong>Education Information</strong>
+                <span>
+                  Degree, Institution, Passing Year and Percentage
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="health"
+                value="true"
+              >
+
+              <div>
+                <strong>Health Information</strong>
+                <span>
+                  Health related verified information
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="caste"
+                value="true"
+              >
+
+              <div>
+                <strong>Caste Information</strong>
+                <span>
+                  Caste Category and Certificate Information
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="drivingLicense"
+                value="true"
+              >
+
+              <div>
+                <strong>Driving License Information</strong>
+                <span>
+                  License Number, Vehicle Types and Expiry Date
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="land"
+                value="true"
+              >
+
+              <div>
+                <strong>Land Information</strong>
+                <span>
+                  Survey Number, Land Area, District and State
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="businessAndTax"
+                value="true"
+              >
+
+              <div>
+                <strong>Business & Tax Information</strong>
+                <span>
+                  PAN, GSTIN, Business Name and Tax Filing Status
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+          <div class="consent-data-item">
+
+            <label class="consent-option">
+
+              <input
+                type="checkbox"
+                name="employment"
+                value="true"
+              >
+
+              <div>
+                <strong>Employment Information</strong>
+                <span>
+                  Employment Status, Employer and Occupation
+                </span>
+              </div>
+
+            </label>
+
+          </div>
+
+        </div>
+
+        <div class="consent-decision">
+
+          <div class="consent-decision-icon">
+            ✓
+          </div>
+
+          <div>
+            <h3>Consent Decision</h3>
+
+            <p>
+              You control which government data can be accessed
+              for this application.
+            </p>
+          </div>
+
+        </div>
+
+        <div class="consent-actions">
+
+          <button
+            type="submit"
+            name="action"
+            value="save"
+            class="consent-btn consent-save"
+          >
+            Save Consent
+          </button>
+
+          <button
+            type="submit"
+            name="action"
+            value="submit"
+            class="consent-btn consent-submit"
+          >
+            Submit Application
+          </button>
+
+        </div>
+
+      </form>
+
+    </div>
+
+    <div class="consent-footer">
+
+      <a href="/services?nationalId=<%= citizen.nationalId %>">
+        ← Back to Government Services
+      </a>
+
+    </div>
+
+  </div>
+
+</body>
+
+</html>

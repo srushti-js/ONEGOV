@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Taxation & Business Registry</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+
+<body class="portal-page">
+
+  <div class="portal-container">
+
+    <div class="portal-header">
+      <h1>Taxation & Business Registry (GST/PAN)</h1>
+      <p>Verified citizen business and taxation information</p>
+      <span class="status">● Business & Tax Verified</span>
+    </div>
+
+    <div class="data-card">
+      <h2>Business & Tax Information</h2>
+
+      <div class="data-row">
+        <span class="data-label">PAN Number</span>
+        <strong class="data-value">
+          <%= citizen.businessAndTax.panNumber || "Not Available" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">GSTIN</span>
+        <strong class="data-value">
+          <%= citizen.businessAndTax.gstin || "Not Available" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">Business Name</span>
+        <strong class="data-value">
+          <%= citizen.businessAndTax.businessName || "Not Available" %>
+        </strong>
+      </div>
+
+      <div class="data-row">
+        <span class="data-label">Tax Filing Status</span>
+        <strong class="data-value">
+          <%= citizen.businessAndTax.taxFilingStatus || "Not Available" %>
+        </strong>
+      </div>
+
+    </div>
+
+    <div class="data-card">
+      <h3>Business & Tax information verified successfully. ✅</h3>
+      <p>This information has been retrieved from the verified government profile.</p>
+
+      <a href="/dashboard?nationalId=<%= citizen.nationalId %>" class="back-btn">
+        ← Back to Dashboard
+      </a>
+    </div>
+
+  </div>
+
+</body>
+</html>

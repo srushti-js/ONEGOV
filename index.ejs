@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Citizen Verification</title>
+
+  <link rel="stylesheet" href="/style.css">
+
+  <style>
+    #portalConfirmation {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.6);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .confirmationBox {
+      background: white;
+      padding: 30px;
+      width: 400px;
+      max-width: 90%;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 5px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .confirmationBox h2 {
+      margin-top: 0;
+    }
+
+    .confirmationBox button {
+      padding: 10px 20px;
+      margin: 10px;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body class="verification-page">
+
+  <h1>Citizen Verification</h1>
+
+  <form action="/verify-citizen" method="GET">
+
+    <div>
+      <label for="nationalId">
+        National ID
+      </label>
+
+      <input
+        type="text"
+        id="nationalId"
+        name="nationalId"
+        placeholder="Enter National ID"
+        required
+      >
+    </div>
+
+    <br>
+
+    <div>
+      <label for="fullName">
+        Full Name
+      </label>
+
+      <input
+        type="text"
+        id="fullName"
+        name="fullName"
+        placeholder="Enter Full Name"
+        required
+      >
+    </div>
+
+    <br>
+
+    <button type="submit">
+      Verify Citizen
+    </button>
+
+  </form>
+
+  <% if (error) { %>
+
+    <h2>❌ Verification Failed</h2>
+
+    <p>
+      <%= error %>
+    </p>
+
+  <% } %>
+
+  <% if (citizen) { %>
+
+    <hr>
+
+    <h2>✅ Identity Verified</h2>
+
+    <p>
+      <strong>Name:</strong>
+      <%= citizen.fullName %>
+    </p>
+
+    <p>
+      <strong>National ID:</strong>
+      <%= citizen.nationalId %>
+    </p>
+
+    <h2>Available Government Portals</h2>
+
+    <% availablePortals.forEach(portal => { %>
+
+      <button
+        type="button"
+        onclick="openPortalConfirmation(
+          '<%= portal.key %>',
+          '<%= portal.name %>',
+          '<%= citizen.nationalId %>'
+        )"
+      >
+        <%= portal.name %>
+      </button>
+
+      <br>
+      <br>
+
+    <% }) %>
+
+    <hr>
+
+    <h2>Government Services & Applications</h2>
+
+    <button
+      type="button"
+      onclick="openPortalConfirmation(
+        'services',
+        'Government Services & Applications',
+        '<%= citizen.nationalId %>'
+      )"
+    >
+      Apply for Government Service
+    </button>
+
+  <% } %>
+
+  <div id="portalConfirmation">
+
+    <div class="confirmationBox">
+
+      <h2>🔐 Identity Verified</h2>
+
+      <p>
+        You are about to access:
+      </p>
+
+      <h3 id="selectedPortalName"></h3>
+
+      <p>
+        Do you want to continue?
+      </p>
+
+      <button
+        type="button"
+        onclick="cancelPortalAccess()"
+      >
+        Cancel
+      </button>
+
+      <button
+        type="button"
+        onclick="continueToPortal()"
+      >
+        Continue
+      </button>
+
+    </div>
+
+  </div>
+
+  <script>
+
+    let selectedPortalKey = "";
+    let selectedNationalId = "";
+
+    function openPortalConfirmation(
+      portalKey,
+      portalName,
+      nationalId
+    ) {
+
+      selectedPortalKey = portalKey;
+      selectedNationalId = nationalId;
+
+      document.getElementById(
+        "selectedPortalName"
+      ).textContent = portalName;
+
+      document.getElementById(
+        "portalConfirmation"
+      ).style.display = "flex";
+
+    }
+
+    function cancelPortalAccess() {
+
+      document.getElementById(
+        "portalConfirmation"
+      ).style.display = "none";
+
+      selectedPortalKey = "";
+      selectedNationalId = "";
+
+    }
+
+    function continueToPortal() {
+
+      if (!selectedPortalKey || !selectedNationalId) {
+        return;
+      }
+
+      if (selectedPortalKey === "services") {
+
+        window.location.href =
+          `/services?nationalId=${encodeURIComponent(selectedNationalId)}`;
+
+        return;
+      }
+
+      window.location.href =
+        `/portal/${selectedPortalKey}?nationalId=${encodeURIComponent(selectedNationalId)}`;
+
+    }
+
+  </script>
+
+</body>
+
+</html>
